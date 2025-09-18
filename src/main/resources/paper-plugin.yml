@@ -1,0 +1,9 @@
+name: Economy
+version: '1.0-SNAPSHOT'
+main: de.eindaniel.economy.Economy
+api-version: '1.21'
+dependencies:
+  server:
+    Vault:
+      required: true
+      load: BEFORE
