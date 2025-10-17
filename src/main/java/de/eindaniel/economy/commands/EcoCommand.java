@@ -62,6 +62,7 @@ public class EcoCommand extends Command {
             case "reset":
                 eco.setBalance(target, 0);
                 sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>Du hast erfolgreich " + target.getName() + "'s Geld zurückgesetzt.")));
+                break;
             default:
                 sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Ungültige Aktion. /eco <give|take|set> <Spieler> <Betrag>")));
                 break;
