@@ -8,6 +8,10 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.eclipse.sisu.launch.Main;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.Collections;
+import java.util.List;
 
 public class EcoCommand extends Command {
 
@@ -52,10 +56,21 @@ public class EcoCommand extends Command {
                 eco.setBalance(target, amount);
                 sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>" + target.getName() + "'s Geld wurde auf " + amount + "€ gesetzt.")));
                 break;
+            case "reset":
+                eco.setBalance(target, 0);
+                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>Du hast erfolgreich " + target.getName() + "'s Geld zurückgesetzt.")));
             default:
                 sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Ungültige Aktion. /eco <give|take|set> <Spieler> <Betrag>")));
                 break;
         }
         return true;
+    }
+
+    @Override
+    public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String @NotNull [] args) throws IllegalArgumentException {
+        if (args.length == 0) {
+            return List.of("give", "take", "set");
+        }
+        return Collections.emptyList();
     }
 }
