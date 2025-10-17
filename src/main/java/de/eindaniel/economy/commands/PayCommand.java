@@ -8,6 +8,13 @@ import org.bukkit.OfflinePlayer;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import org.bukkit.util.StringUtil;
+import org.jetbrains.annotations.NotNull;
+
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 public class PayCommand extends Command {
 
@@ -49,5 +56,26 @@ public class PayCommand extends Command {
             target.getPlayer().sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Du hast <#1fff17>" + amount + "€ <gray>von <#1fff17>" + from.getName() + " <gray>erhalten.")));
         }
         return true;
+    }
+
+    @Override
+    public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String @NotNull [] args) throws IllegalArgumentException {
+        if (args.length == 1) {
+            String lastWord = args[args.length - 1];
+
+            Player senderPlayer = sender instanceof Player ? (Player) sender : null;
+
+            ArrayList<String> matchedPlayers = new ArrayList<String>();
+            for (Player player : sender.getServer().getOnlinePlayers()) {
+                String name = player.getName();
+                if ((senderPlayer == null || senderPlayer.canSee(player)) && StringUtil.startsWithIgnoreCase(name, lastWord)) {
+                    matchedPlayers.add(name);
+                }
+            }
+
+            Collections.sort(matchedPlayers, String.CASE_INSENSITIVE_ORDER);
+            return matchedPlayers;
+        }
+        return Collections.emptyList();
     }
 }
