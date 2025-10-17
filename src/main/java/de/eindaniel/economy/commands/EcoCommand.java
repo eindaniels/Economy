@@ -72,7 +72,7 @@ public class EcoCommand extends Command {
     @Override
     public @NotNull List<String> tabComplete(@NotNull CommandSender sender, @NotNull String alias, @NotNull String @NotNull [] args) throws IllegalArgumentException {
         if (args.length == 1) {
-            return List.of("give", "take", "set");
+            return List.of("give", "take", "set", "reset");
         }
         if (args.length == 2) {
             String lastWord = args[args.length - 1];
