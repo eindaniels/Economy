@@ -38,7 +38,9 @@ public class EcoCommand extends Command {
         double amount;
 
         try {
-            amount = Double.parseDouble(args[2]);
+            if (!action.equalsIgnoreCase("reset")) {
+                amount = Double.parseDouble(args[2]);
+            }
         } catch (NumberFormatException e) {
             sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Wrong Amount!")));
             return true;
