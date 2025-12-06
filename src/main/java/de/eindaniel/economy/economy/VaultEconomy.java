@@ -39,12 +39,12 @@ public class VaultEconomy implements Economy {
 
     @Override
     public String format(double amount) {
-        return String.format("%.2f" + plugin.getConfig().getString("currency"), amount);
+        return String.format("%.2f€", amount);
     }
 
     @Override
     public String currencyNamePlural() {
-        return plugin.getConfig().getString("currency-namePlural");
+        return "Euros";
     }
 
     @Override

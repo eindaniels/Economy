@@ -28,12 +28,12 @@ public class BalanceCommand extends Command {
         if (args.length > 0) {
             OfflinePlayer player = Bukkit.getOfflinePlayer(args[0]);
             double bal = Economy.getInstance().getEconomyManager().getBalance(player);
-            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>" + player.getName() +  "'s Balance <dark_gray>→ <#1fff17>" + bal)));
+            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>" + player.getName() +  "'s Balance <dark_gray>→ <#1fff17>" + bal + "€")));
             return true;
         }
         Player player = (Player) sender;
         double bal = Economy.getInstance().getEconomyManager().getBalance(player);
-        player.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Your Balance <dark_gray>→ <#1fff17>" + bal)));
+        player.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Your Balance <dark_gray>→ <#1fff17>" + bal + "€")));
         return true;
     }
 

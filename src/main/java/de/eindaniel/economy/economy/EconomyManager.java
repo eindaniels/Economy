@@ -36,8 +36,7 @@ public class EconomyManager {
     }
 
     public double getBalance(OfflinePlayer player) {
-        double balance = Double.parseDouble(format(balances.getOrDefault(player.getUniqueId(), 0.0)));
-        return balance;
+        return balances.getOrDefault(player.getUniqueId(), 0.0);
     }
 
     public void setBalance(OfflinePlayer player, double amount) {

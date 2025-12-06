@@ -56,7 +56,4 @@ public class Economy extends JavaPlugin {
         Component prefix = MiniMessage.miniMessage().deserialize("<dark_gray>[<#ffdd00>Economy<dark_gray>] ");
         return prefix;
     }
-    public String format(double amount) {
-        return String.format("%.2f" + this.getConfig().getString("currency"), amount);
-    }
 }
