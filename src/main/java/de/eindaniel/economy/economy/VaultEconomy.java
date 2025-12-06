@@ -10,9 +10,11 @@ import java.util.List;
 public class VaultEconomy implements Economy {
 
     private final EconomyManager manager;
+    private final de.eindaniel.economy.Economy plugin;
 
-    public VaultEconomy(EconomyManager manager) {
+    public VaultEconomy(EconomyManager manager, de.eindaniel.economy.Economy plugin) {
         this.manager = manager;
+        this.plugin = plugin;
     }
 
     @Override
@@ -37,12 +39,12 @@ public class VaultEconomy implements Economy {
 
     @Override
     public String format(double amount) {
-        return String.format("%.2f$", amount);
+        return String.format("%.2f" + plugin.getConfig().getString("currency"), amount);
     }
 
     @Override
     public String currencyNamePlural() {
-        return "Euros";
+        return plugin.getConfig().getString("currency-namePlural");
     }
 
     @Override

@@ -25,11 +25,11 @@ public class EcoCommand extends Command {
     @Override
     public boolean execute(CommandSender sender, String label, String[] args) {
         if (!sender.hasPermission("economy.eco")) {
-            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Du hast keine Berechtigung dazu.")));
+            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>You don't have Permission to that.")));
             return true;
         }
         if (args.length != 3) {
-            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Richtige Verwendung <dark_gray>→ <#fbecab>/eco <give|take|set> <Spieler> <Betrag>")));
+            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Usage <dark_gray>→ <#fbecab>/eco <give|take|set> <Player> <Amount>")));
             return true;
         }
 
@@ -40,7 +40,7 @@ public class EcoCommand extends Command {
         try {
             amount = Double.parseDouble(args[2]);
         } catch (NumberFormatException e) {
-            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Ungültiger Betrag!")));
+            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Wrong Amount!")));
             return true;
         }
 
@@ -49,22 +49,22 @@ public class EcoCommand extends Command {
         switch (action) {
             case "give":
                 eco.addBalance(target, amount);
-                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>" + amount + "€ wurden zu " + target.getName() + " erfolgreich hinzugefügt.")));
+                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>" + amount + " has been sent to " + target.getName() + " successfully.")));
                 break;
             case "take":
                 eco.removeBalance(target, amount);
-                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>" + amount + "€ wurden von " + target.getName() + " erfolgreich weggenommen.")));
+                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>" + amount + " has been taken from " + target.getName() + " successfully.")));
                 break;
             case "set":
                 eco.setBalance(target, amount);
-                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>" + target.getName() + "'s Geld wurde auf " + amount + "€ gesetzt.")));
+                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>" + target.getName() + "'s Balance has been set to " + amount + "€ successfully.")));
                 break;
             case "reset":
                 eco.setBalance(target, 0);
-                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>Du hast erfolgreich " + target.getName() + "'s Geld zurückgesetzt.")));
+                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#1fff17>You have reseted " + target.getName() + "'s Balance.")));
                 break;
             default:
-                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Ungültige Aktion. /eco <give|take|set> <Spieler> <Betrag>")));
+                sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Wrong Action. /eco <give|take|set> <Player> <Amount>")));
                 break;
         }
         return true;

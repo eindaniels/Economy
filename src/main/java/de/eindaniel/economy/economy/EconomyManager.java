@@ -36,7 +36,8 @@ public class EconomyManager {
     }
 
     public double getBalance(OfflinePlayer player) {
-        return balances.getOrDefault(player.getUniqueId(), 0.0);
+        double balance = Double.parseDouble(format(balances.getOrDefault(player.getUniqueId(), 0.0)));
+        return balance;
     }
 
     public void setBalance(OfflinePlayer player, double amount) {
@@ -56,5 +57,9 @@ public class EconomyManager {
         List<Map.Entry<UUID, Double>> list = new ArrayList<>(balances.entrySet());
         list.sort((a, b) -> Double.compare(b.getValue(), a.getValue()));
         return list;
+    }
+
+    public String format(double amount) {
+        return String.format("%.2f" + plugin.getConfig().getString("currency"), amount);
     }
 }

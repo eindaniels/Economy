@@ -10,6 +10,7 @@ import net.kyori.adventure.text.Component;
 import net.kyori.adventure.text.minimessage.MiniMessage;
 import org.bukkit.Bukkit;
 import org.bukkit.command.CommandMap;
+import org.bukkit.configuration.file.FileConfiguration;
 import org.bukkit.plugin.java.JavaPlugin;
 
 import java.lang.reflect.Field;
@@ -54,5 +55,8 @@ public class Economy extends JavaPlugin {
     public static Component getPrefix() {
         Component prefix = MiniMessage.miniMessage().deserialize("<dark_gray>[<#ffdd00>Economy<dark_gray>] ");
         return prefix;
+    }
+    public String format(double amount) {
+        return String.format("%.2f" + this.getConfig().getString("currency"), amount);
     }
 }

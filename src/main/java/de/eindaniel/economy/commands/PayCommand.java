@@ -26,7 +26,7 @@ public class PayCommand extends Command {
     public boolean execute(CommandSender sender, String label, String[] args) {
         if (!(sender instanceof Player)) { return true; }
         if (args.length != 2) {
-            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Richtige Verwendung <dark_gray>→ <#fbecab>/pay <Spieler> <Betrag>")));
+            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Usage <dark_gray>→ <#fbecab>/pay <Player> <Amount>")));
             return true;
         }
 
@@ -37,23 +37,23 @@ public class PayCommand extends Command {
         try {
             amount = Double.parseDouble(args[1]);
         } catch (NumberFormatException e) {
-            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Ungültiger Betrag!")));
+            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Wrong Amount!")));
             return true;
         }
 
         EconomyManager eco = Economy.getInstance().getEconomyManager();
 
         if (eco.getBalance(from) < amount) {
-            from.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>Du hast nicht genügend Geld!")));
+            from.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>You have not enough money!")));
             return true;
         }
 
         eco.removeBalance(from, amount);
         eco.addBalance(target, amount);
 
-        from.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Du hast <#1fff17>" + amount + "€ <gray>an <#1fff17>" + target.getName() + " <gray>gesendet.")));
+        from.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>You sent <#1fff17>" + amount + "€ <gray>to <#1fff17>" + target.getName() + " <gray>successfully.")));
         if (target.isOnline()) {
-            target.getPlayer().sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Du hast <#1fff17>" + amount + "€ <gray>von <#1fff17>" + from.getName() + " <gray>erhalten.")));
+            target.getPlayer().sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>You got <#1fff17>" + amount + "€ <gray>from <#1fff17>" + from.getName() + " <gray>successfully.")));
         }
         return true;
     }

@@ -8,7 +8,7 @@ import org.eclipse.sisu.launch.Main;
 public class VaultHook {
 
     public static void setup(de.eindaniel.economy.Economy plugin, EconomyManager manager) {
-        Economy provider = new VaultEconomy(manager);
+        Economy provider = new VaultEconomy(manager, plugin);
         Bukkit.getServicesManager().register(Economy.class, provider, plugin, ServicePriority.Highest);
     }
 }

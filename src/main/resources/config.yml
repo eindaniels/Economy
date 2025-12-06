@@ -1,0 +1,8 @@
+# default: €
+currency: "€"
+
+# default: Euro
+currency-nameSingular: "Euro"
+
+# default: Euros
+currency-namePlural: "Euros"

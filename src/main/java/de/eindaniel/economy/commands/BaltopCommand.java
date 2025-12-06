@@ -21,23 +21,23 @@ public class BaltopCommand extends Command {
     public boolean execute(CommandSender sender, String label, String[] args) {
         List<Map.Entry<java.util.UUID, Double>> top = Economy.getInstance().getEconomyManager().getTopBalances();
 
-        sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Top 10 Spieler mit dem meisten Geld:")));
+        sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>The top 10 with the most money:")));
         for (int i = 0; i < Math.min(10, top.size()); i++) {
             Map.Entry<java.util.UUID, Double> entry = top.get(i);
             OfflinePlayer p = Bukkit.getOfflinePlayer(entry.getKey());
             Component component;
             switch (i) {
                 case 0:
-                    component = MiniMessage.miniMessage().deserialize("<#EFBF04>" + (i + 1) + ". " + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue() + "€");
+                    component = MiniMessage.miniMessage().deserialize("<#EFBF04>" + (i + 1) + ". " + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue());
                     break;
                 case 1:
-                    component = MiniMessage.miniMessage().deserialize("<#C4C4C4>" + (i + 1) + ". " + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue() + "€");
+                    component = MiniMessage.miniMessage().deserialize("<#C4C4C4>" + (i + 1) + ". " + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue());
                     break;
                 case 2:
-                    component = MiniMessage.miniMessage().deserialize("<#CE8946>" + (i + 1) + ". " + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue() + "€");
+                    component = MiniMessage.miniMessage().deserialize("<#CE8946>" + (i + 1) + ". " + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue());
                     break;
                 default:
-                    component = MiniMessage.miniMessage().deserialize("<#fbecab>" + (i + 1) + ". <gray>" + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue() + "€");
+                    component = MiniMessage.miniMessage().deserialize("<#fbecab>" + (i + 1) + ". <gray>" + p.getName() + " <dark_gray>- <#1fff17>" + entry.getValue());
                     break;
             }
             sender.sendMessage(Economy.getPrefix().append(component));
