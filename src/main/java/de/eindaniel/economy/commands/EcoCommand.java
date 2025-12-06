@@ -29,7 +29,7 @@ public class EcoCommand extends Command {
             return true;
         }
         if (args.length < 2) {
-            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Usage <dark_gray>→ <#fbecab>/eco <give|take|set> <Player> <Amount>")));
+            sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Usage <dark_gray>→ <#fbecab>/eco <give|take|set|reset> <Player> <Amount>")));
             return true;
         }
 
