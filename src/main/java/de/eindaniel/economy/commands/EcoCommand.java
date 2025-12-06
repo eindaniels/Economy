@@ -28,7 +28,7 @@ public class EcoCommand extends Command {
             sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<#ff1717>You don't have Permission to that.")));
             return true;
         }
-        if (args.length != 3) {
+        if (args.length < 2) {
             sender.sendMessage(Economy.getPrefix().append(MiniMessage.miniMessage().deserialize("<gray>Usage <dark_gray>→ <#fbecab>/eco <give|take|set> <Player> <Amount>")));
             return true;
         }
