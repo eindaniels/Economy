@@ -35,7 +35,7 @@ public class EcoCommand extends Command {
 
         String action = args[0].toLowerCase();
         OfflinePlayer target = Bukkit.getOfflinePlayer(args[1]);
-        double amount;
+        double amount = 0;
 
         try {
             if (!action.equalsIgnoreCase("reset")) {
